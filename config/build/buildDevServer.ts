@@ -7,5 +7,7 @@ export function buildDevServer(options: BuildOptions): ConfigurationDevServer {
     open: true,
     // Позволяет проксировать запросы через корневую стрраницу
     historyApiFallback: true,
+    // Горячая перезагрузка
+    hot: true,
   };
 };
