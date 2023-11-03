@@ -7,10 +7,10 @@ import { Sidebar } from 'widgets/Sidebar';
 import { Suspense } from 'react';
 
 const App = () => {
-  const {theme} = useTheme();
+  const { theme } = useTheme();
 
   return (
-    <div className={classNames('app', { 'hovered': false, 'focused': true }, [theme])}>
+    <div className={classNames('app', { hovered: false, focused: true }, [theme])}>
       <Suspense fallback=''>
         <NavBar/>
         <div className='content-page'>

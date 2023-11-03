@@ -1,28 +1,27 @@
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import webpack from "webpack";
-import { BuildOptions } from "./types/config";
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import type webpack from 'webpack';
+import { type BuildOptions } from './types/config';
 
-export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
-
+export function buildLoaders (options: BuildOptions): webpack.RuleSetRule[] {
   const typescriptLoader = {
     test: /\.tsx?$/,
     use: 'ts-loader',
-    exclude: /node_modules/,
+    exclude: /node_modules/
   };
 
   const svgLoader = {
     test: /\.svg$/i,
     issuer: /\.[jt]sx?$/,
-    use: ['@svgr/webpack'],
+    use: ['@svgr/webpack']
   };
 
   const fileLoader = {
     test: /\.(png|jpe?g|gif|woff2|woff)$/i,
     use: [
       {
-        loader: 'file-loader',
-      },
-    ],
+        loader: 'file-loader'
+      }
+    ]
   };
 
   const styleLoader = {
@@ -32,20 +31,20 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
       options.isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
       // Translates CSS into CommonJS
       {
-        loader: "css-loader",
+        loader: 'css-loader',
         options: {
-      // Подключить возможность использовать модули стилей
+          // Подключить возможность использовать модули стилей
           modules: {
             // Если стиль глобальный то модуль не используется
             auto: (resPath: string): boolean => Boolean(resPath.includes('.module.')),
             // Если девелоп, классы имеют читаемые названия
-            localIdentName: options.isDev ? '[path][name]__[local]--[hash:base64:5]' : '[hash:base64:8]',
-          },
-        },
+            localIdentName: options.isDev ? '[path][name]__[local]--[hash:base64:5]' : '[hash:base64:8]'
+          }
+        }
       },
       // Compiles Sass to CSS
-      "sass-loader",
-    ],
+      'sass-loader'
+    ]
   };
 
   return [

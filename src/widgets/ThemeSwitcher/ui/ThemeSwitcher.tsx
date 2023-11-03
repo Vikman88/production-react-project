@@ -5,18 +5,16 @@ import type { PropsWithChildren } from 'react';
 import { Theme, useTheme } from 'app/providers/ThemeProvider';
 import LightIcon from 'shared/assets/icons/theme-light.svg';
 import DarkIcon from 'shared/assets/icons/theme-dark.svg';
-import { Button } from 'shared/ui/Button';
-import { ThemeButton } from 'shared/ui/Button';
-
+import { Button, ThemeButton } from 'shared/ui/Button';
 
 interface ThemeSwitcherProps {
-  className?: string;
+  className?: string
 }
 
 export const ThemeSwitcher = (props: PropsWithChildren<ThemeSwitcherProps>) => {
   const { className } = props;
-  const {theme, toggleTheme} = useTheme();
-  
+  const { theme, toggleTheme } = useTheme();
+
   return (
     <Button
       theme={ThemeButton.CLEAR}
