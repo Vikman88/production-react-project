@@ -1,12 +1,14 @@
 module.exports = {
     "env": {
         "browser": true,
-        "es2021": true
+        "es2021": true,
+        "jest": true
     },
     "extends": [
         "standard-with-typescript",
         "plugin:react/recommended",
-        "plugin:react/jsx-runtime"
+        "plugin:react/jsx-runtime",
+        "plugin:i18next/recommended"
     ],
     "overrides": [
         {
@@ -26,7 +28,8 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "i18next"
     ],
     "rules": {
         "semi": "off",
